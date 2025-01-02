@@ -1,17 +1,17 @@
 use std::{io::{stdin, stdout, Error, Write}, path::Path, process::{Command, Stdio, Child}};
 use std::env;
 
+pub mod forming;
 
 fn main() ->std::io::Result<()>
 {
     loop 
     {
         let path = env::current_dir()?;
-        let mut input = String::new();
         
         print!("{} > ", path.as_path().display());
-        let mut _result = stdout().flush();
-        stdin().read_line(&mut input).unwrap();
+        let _result = stdout().flush();
+        let input =  forming::read_string();
         let mut commands = input.trim().split(" | ").peekable();
         let mut previous: Option<Child> = None;
 
