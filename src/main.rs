@@ -7,10 +7,6 @@ fn main() ->std::io::Result<()>
 {
     loop 
     {
-        let path = env::current_dir()?;
-        
-        print!("{} > ", path.as_path().display());
-        let _result = stdout().flush();
         let input =  forming::read_string();
         let mut commands = input.trim().split(" | ").peekable();
         let mut previous: Option<Child> = None;
